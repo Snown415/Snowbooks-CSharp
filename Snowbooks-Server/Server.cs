@@ -11,20 +11,20 @@ namespace Snowbooks_Server
 {
     public class Server
     {
-        public static Dictionary<string, User> activeUsers;
         public static Socket Socket { get; set; }
 
         public static readonly int Port = 43595;
         public static readonly bool Debug = true;
 
-        public bool Running { get; set; }
+        public bool IsRunning { get; set; }
 
-        public async void Start()
+        public void Start()
         {
-            Running = true;
+            IsRunning = true;
             Console.WriteLine($"Starting server on port {Port}...");
+
             serverTask.RunSynchronously();
-            Running = false;
+            serverTask.ContinueWith((e) => { ShutDown(); });
 
             Console.WriteLine("Server is done running...");
             Console.ReadLine();
@@ -38,14 +38,28 @@ namespace Snowbooks_Server
 
             serverSocket.Start();
             Console.WriteLine($"Listening for connections @ {ipAd.ToString()}");
+           
 
             while (true)
             {
                 clientSocket = serverSocket.AcceptTcpClient();
-                Console.WriteLine($"Connected to {clientSocket.Client.RemoteEndPoint}");
+
+                NetworkStream networkStream = clientSocket.GetStream();
+                int size = clientSocket.ReceiveBufferSize;
+                byte[] incomingData = new byte[size];
+                networkStream.Read(incomingData, 0, size);
+
+                Packet packet = PacketHandler.GetPacket(incomingData);
+
+                Console.WriteLine($"Received a {packet.PacketType} packet from {clientSocket.Client.RemoteEndPoint}");
             }
 
         });
+
+        public void ShutDown()
+        {
+            IsRunning = false;
+        }
 
     }
 }
