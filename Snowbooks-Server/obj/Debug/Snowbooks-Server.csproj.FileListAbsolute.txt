@@ -1,0 +1,7 @@
+C:\Users\Snow\source\repos\Snowbooks-Server\Snowbooks-Server\bin\Debug\Snowbooks-Server.exe.config
+C:\Users\Snow\source\repos\Snowbooks-Server\Snowbooks-Server\bin\Debug\Snowbooks-Server.exe
+C:\Users\Snow\source\repos\Snowbooks-Server\Snowbooks-Server\bin\Debug\Snowbooks-Server.pdb
+C:\Users\Snow\source\repos\Snowbooks-Server\Snowbooks-Server\obj\Debug\Snowbooks-Server.csprojAssemblyReference.cache
+C:\Users\Snow\source\repos\Snowbooks-Server\Snowbooks-Server\obj\Debug\Snowbooks-Server.csproj.CoreCompileInputs.cache
+C:\Users\Snow\source\repos\Snowbooks-Server\Snowbooks-Server\obj\Debug\Snowbooks-Server.exe
+C:\Users\Snow\source\repos\Snowbooks-Server\Snowbooks-Server\obj\Debug\Snowbooks-Server.pdb
